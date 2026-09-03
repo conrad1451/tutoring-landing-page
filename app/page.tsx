@@ -1,7 +1,9 @@
+// app/page.tsx
 // CHQ: Gemini AI refactored
 
 import Link from "next/link";
 import { testimonials } from "./data/testimonials";
+import { subjects } from "./data/subjects";
 
 export default function Home() {
   return (
@@ -53,28 +55,22 @@ export default function Home() {
         {/* Subjects Section */}
         <section id="subjects" className="space-y-8">
           <div className="text-center space-y-2">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Core Expertise</h2>
-            <p className="text-gray-600">Targeted instruction for high school and college math courses.</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Subjects</h2>
+            {/* <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Core Expertise</h2> */}
+            {/* <p className="text-gray-600">Targeted instruction for high school and college math courses.</p> */}
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 border border-gray-100 rounded-2xl bg-gray-50/50 space-y-3">
-              <h3 className="text-xl font-bold text-gray-900">Algebra 1 & 2</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                Build a rock-solid foundation in equations, functions, graphing, and polynomial operations.
-              </p>
-            </div>
-            <div className="p-6 border border-gray-100 rounded-2xl bg-gray-50/50 space-y-3">
-              <h3 className="text-xl font-bold text-gray-900">AP Calculus AB</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                Master limits, derivatives, integrals, and exam-taking strategies to score a 5 on the AP test.
-              </p>
-            </div>
-            <div className="p-6 border border-gray-100 rounded-2xl bg-gray-50/50 space-y-3">
-              <h3 className="text-xl font-bold text-gray-900">Test Prep & Homework</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                Targeted problem-solving sessions to prepare for upcoming unit exams, midterm prep, and final assessments.
-              </p>
-            </div>
+            {subjects.map((item) => (
+              <div 
+                key={item.id} 
+                className="p-6 border border-gray-100 rounded-2xl bg-gray-50/50 space-y-3"
+              >
+                <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            ))}
           </div>
         </section>
 
