@@ -1,3 +1,5 @@
+// CHQ: Gemini AI refactored
+
 import Link from "next/link";
 
 export default function Home() {
