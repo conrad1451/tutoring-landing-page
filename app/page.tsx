@@ -1,13 +1,14 @@
 // CHQ: Gemini AI refactored
 
 import Link from "next/link";
+import { testimonials } from "./data/testimonials";
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col font-[family-name:var(--font-geist-sans)]">
       {/* Navigation Header */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-white/80 border-b border-gray-100 px-6 py-4 flex justify-between items-center max-w-6xl w-full mx-auto">
-        <span className="text-xl font-bold tracking-tight text-indigo-600">MathMastery</span>
+        <span className="text-xl font-bold tracking-tight text-indigo-600">CS & Math Tutoring</span>
         <nav className="space-x-6 text-sm font-medium text-gray-600 hidden md:block">
           <a href="#subjects" className="hover:text-indigo-600 transition-colors">Subjects</a>
           <a href="#about" className="hover:text-indigo-600 transition-colors">About</a>
@@ -17,12 +18,12 @@ export default function Home() {
           href="#book"
           className="bg-indigo-600 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors"
         >
-          Book a Free Trial
+          Book a Call
         </a>
       </header>
 
       <main className="flex-1 max-w-6xl w-full mx-auto px-6 py-12 space-y-20">
-        {/* Introduction Section */}
+        {/* Intro Section */}
         <section className="text-center py-12 max-w-3xl mx-auto space-y-6">
           <span className="inline-block bg-indigo-50 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
             1-on-1 Online Math Tutoring
@@ -78,29 +79,54 @@ export default function Home() {
         </section>
 
         {/* Benefits Section */}
-        <section id="about" className="grid md:grid-cols-2 gap-12 items-center border-t border-gray-100 pt-16">
-          <div className="space-y-4">
+        <section id="about" className="space-y-6 border-t border-gray-100 pt-16">
+          <div className="max-w-2xl space-y-3">
             <h2 className="text-3xl font-bold text-gray-900">Why Students Succeed</h2>
             <p className="text-gray-600 leading-relaxed">
               Math doesn't have to be overwhelming. My tutoring approach focuses on breaking down complex proofs and formulas into simple, intuitive concepts.
             </p>
-            <ul className="space-y-3 text-sm text-gray-700">
-              <li className="flex items-center gap-2">
-                <span className="text-indigo-600 font-bold">✓</span> Personalized learning plans designed around school syllabi
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-indigo-600 font-bold">✓</span> Interactive digital whiteboard for clear step-by-step problem solving
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-indigo-600 font-bold">✓</span> Flexible online scheduling fitting busy student routines
-              </li>
-            </ul>
           </div>
-          <div className="bg-indigo-50/60 p-8 rounded-3xl border border-indigo-100 space-y-4">
-            <blockquote className="text-gray-800 italic text-base">
-              "Working together helped transform my calculus grade from a C to an A. The step-by-step approach made tough derivative problems finally click!"
-            </blockquote>
-            <p className="text-sm font-semibold text-indigo-900">— High School Senior</p>
+          <ul className="grid md:grid-cols-3 gap-4 text-sm text-gray-700">
+            <li className="flex items-start gap-2 bg-gray-50 p-4 rounded-xl border border-gray-100">
+              <span className="text-indigo-600 font-bold">✓</span> 
+              <span>Personalized learning plans designed around school syllabi</span>
+            </li>
+            <li className="flex items-start gap-2 bg-gray-50 p-4 rounded-xl border border-gray-100">
+              <span className="text-indigo-600 font-bold">✓</span> 
+              <span>Interactive digital whiteboard for clear step-by-step problem solving</span>
+            </li>
+            <li className="flex items-start gap-2 bg-gray-50 p-4 rounded-xl border border-gray-100">
+              <span className="text-indigo-600 font-bold">✓</span> 
+              <span>Flexible online scheduling fitting busy student routines</span>
+            </li>
+          </ul>
+        </section>
+
+        {/* Testimonials List Section */}
+        <section id="testimonials" className="space-y-8 border-t border-gray-100 pt-16">
+          <div className="text-center space-y-2">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Record</h2>
+            <p className="text-gray-600">See what past students have achieved through targeted 1-on-1 tutoring.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {testimonials.map((item) => (
+              <div 
+                key={item.id} 
+                className="bg-indigo-50/60 p-6 rounded-2xl border border-indigo-100 flex flex-col justify-between space-y-4"
+              >
+                <blockquote className="text-gray-800 text-sm leading-relaxed">
+                  {/* "{item.quote}" */}
+                  {item.quote}
+                </blockquote>
+                <div>
+                  <p className="text-sm font-semibold text-indigo-950">{item.author}</p>
+                  <p className="text-xs text-indigo-700">
+                    {item.role} {item.subject && `• ${item.subject}`}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -123,7 +149,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-gray-100 py-8 text-center text-xs text-gray-500">
-        © {new Date().getFullYear()} Online Math Tutoring. All rights reserved.
+        © {new Date().getFullYear()} Conrad Hansen-Quartey Tutoring. All rights reserved.
       </footer>
     </div>
   );
