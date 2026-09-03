@@ -112,7 +112,6 @@ export default function Home() {
                 className="bg-indigo-50/60 p-6 rounded-2xl border border-indigo-100 flex flex-col justify-between space-y-4"
               >
                 <blockquote className="text-gray-800 text-sm leading-relaxed">
-                  {/* "{item.quote}" */}
                   {item.quote}
                 </blockquote>
                 <div>
