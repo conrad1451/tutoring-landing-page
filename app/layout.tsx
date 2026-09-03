@@ -1,3 +1,5 @@
+// app/layout.tsx
+
 // CHQ: Gemini AI refactored
 
 import type { Metadata } from "next";
