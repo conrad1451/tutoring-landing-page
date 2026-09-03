@@ -31,10 +31,10 @@ export default function Home() {
             1-on-1 Online Math Tutoring
           </span>
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 leading-tight">
-            Master Math with Confidence & Clarity
+            Master Math and Computer Science with Confidence & Clarity
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Struggling with Algebra or AP Calculus? Get personalized, step-by-step guidance tailored to your learning style so you can raise your grades and conquer test anxiety.
+            Struggling with Algebra, AP Calculus or Computer Science? Get clarity and guidance compatible with your learning style so you can dispel confusion and deeply understand what you're studying.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <a
@@ -133,9 +133,10 @@ export default function Home() {
           </p>
           <div>
             <a
-              href="mailto:contact@example.com"
-              className="inline-block bg-white text-indigo-600 font-semibold px-8 py-3 rounded-xl shadow hover:bg-indigo-50 transition-colors"
-            >
+            href="https://forms.gle/PMwhc6FBrQ1GJJ9MA"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-white text-indigo-600 font-semibold px-8 py-3 rounded-xl shadow hover:bg-indigo-50 transition-colors">
               Get in Touch Today
             </a>
           </div>
