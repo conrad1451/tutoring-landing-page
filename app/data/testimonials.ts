@@ -14,21 +14,27 @@ export const testimonials: Testimonial[] = [
   {
     id: "1",
     quote: "Helped a Calculus student increase their average exam grade by 10 percentage points.",
-    // author: "Alex M.",
+    author: "",
+    // author: "Alex M.",Q
+    role: "",
     // role: "High School Senior",
     subject: "AP Calculus AB",
   },
   {
     id: "2",
     quote: "Helped a student fortify math foundations to bring them up to grade level",
+    author: "",
     // author: "Jordan K.",
+    role: "",
     // role: "High School Junior",
     subject: "Algebra 1",
   },
   {
     id: "3",
     quote: "Trained student to use the Linux terminal, install software packages, configure development tools, and prepare CAD files for 3D printing workflows",
+    author: "",
     // author: "Parent of 10th Grader",
+    role: "",
     // role: "Parent",
     subject: "Linux",
   },
