@@ -17,6 +17,7 @@ export default function APCalculusABPage() {
       badge="1-on-1 Online AP Calculus AB Tutoring"
       headline="I help AP Calculus AB students who have shaky foundations in Algebra and Precalculus to fortify their foundations through targeted diagnostics and one to three weekly sessions"
       intro="Most calculus struggles are really algebra and precalculus struggles in disguise. We locate the gaps, close them, and build the confidence to handle limits, derivatives, and integrals."
+      videoSrc="https://fast.wistia.net/embed/iframe/e51ki4fevj"
     />
   );
 }

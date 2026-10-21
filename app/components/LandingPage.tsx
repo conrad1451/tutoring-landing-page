@@ -12,6 +12,34 @@ export interface LandingPageProps {
   intro: string;
   /** Use a smaller heading size for longer, sentence-style headlines. */
   longHeadline?: boolean;
+  /** Embed URL for a sample session video. When set, replaces the Core Expertise section. */
+  videoSrc?: string;
+}
+
+
+const SampleSessionSection = ({ src }: { src: string }) => {
+  return (
+    <section id="sample-session" className="space-y-8">
+      <div className="text-center space-y-2">
+        <h2 className="text-2xl md:text-3xl font-bold text-slate-900">See a Sample Session</h2>
+        <p className="text-slate-600">Watch me talk through what a typical 1-on-1 session looks like.</p>
+      </div>
+      <div
+      className="max-w-4xl mx-auto overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm"
+      style={{ aspectRatio: 1.83206106870229 }}
+      >
+        <iframe
+          src={src}
+          title="Sample tutoring session"
+          className="h-full w-full"
+          loading="lazy"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
+      </div>
+    </section>
+  )
 }
 
 const Footer = () => {
@@ -22,15 +50,18 @@ const Footer = () => {
   )
 }
 
-const NavigationBar = () => {
+const NavigationBar = ({ hasVideo }: { hasVideo: boolean }) => {
   return(
       <header className="sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b border-slate-200 px-6 py-4 flex justify-between items-center max-w-6xl w-full mx-auto">
         <a href="/" className="text-xl font-bold tracking-tight text-blue-700">
           CS & Math Tutoring
         </a>
         <nav className="space-x-6 text-sm font-semibold text-slate-700 hidden md:block">
-          <a href="#subjects" className="hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 rounded-sm transition-colors">
-            Subjects
+          <a
+           href={hasVideo ? "#sample-session" : "#subjects"}
+           className="hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 rounded-sm transition-colors"
+           >
+            {hasVideo ? "Sample Session" : "Subjects"}
           </a>
           <a href="#about" className="hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 rounded-sm transition-colors">
             About
@@ -49,7 +80,13 @@ const NavigationBar = () => {
   )
 }
 
-const IntroSection = () => {
+const IntroSection = ({
+  badge,
+  headline,
+  intro,
+  longHeadline,
+  hasVideo,
+}: Pick<LandingPageProps, "badge" | "headline" | "intro" | "longHeadline"> & { hasVideo: boolean }) => {
   return (
     <section className="text-center py-12 max-w-3xl mx-auto space-y-6">
       <span className="inline-block bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
@@ -73,10 +110,10 @@ const IntroSection = () => {
           Schedule a Consultation
         </a>
         <a
-          href="#subjects"
+          href={hasVideo ? "#sample-session" : "#subjects"}
           className="border border-slate-300 text-slate-800 font-semibold px-6 py-3 rounded-xl hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-500 transition-all text-center"
         >
-          Explore Subjects
+          {hasVideo ? "Watch a Sample Session" : "Explore Subjects"}
         </a>
       </div>
     </section>
@@ -102,6 +139,27 @@ const SubjectsSection = () => {
     </section>
   )
 }
+
+// const Algebra2CourseBenefits = () => {
+//   return (
+//     <section id="alg2topics" className="space-y-8">
+//       <div className="text-center space-y-2">
+//         <h2 className="text-2xl md:text-3xl font-bold text-slate-900">Algebra 2 Target Areas</h2>
+//         {/* <p className="text-slate-600">Tar .</p> */}
+//       </div>
+//       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+//         {alg2topics.map((item) => (
+//           <div key={item.id} className="p-6 border border-slate-200 rounded-2xl bg-slate-50 space-y-3">
+//             <h3 className="text-xl font-bold text-slate-900">{item.title}</h3>
+//             <p className="text-sm text-slate-700 leading-relaxed">{item.description}</p>
+//           </div>
+//         ))}
+          
+//       </div>
+//     </section>
+//   )
+// }
+
 
 const BenefitsSection = () => {
   return (
@@ -182,32 +240,31 @@ export default function LandingPage({
   headline,
   intro,
   longHeadline = false,
+  videoSrc,
 }: LandingPageProps) {
+  const hasVideo = Boolean(videoSrc);
+
   return (
     <div className="min-h-screen flex flex-col bg-white text-slate-900 font-[family-name:var(--font-geist-sans)]">
-      {/* Navigation Header */}
-      <NavigationBar/>
+      <NavigationBar hasVideo={hasVideo} />
 
       <main className="flex-1 max-w-6xl w-full mx-auto px-6 py-12 space-y-20">
-        {/* Intro Section */}
-        <IntroSection/>
-        
-        {/* Subjects Section */}
-        <SubjectsSection/> 
+        <IntroSection
+          badge={badge}
+          headline={headline}
+          intro={intro}
+          longHeadline={longHeadline}
+          hasVideo={hasVideo}
+        />
 
-        {/* Benefits Section */}
-        <BenefitsSection/>
+        {videoSrc ? <SampleSessionSection src={videoSrc} /> : <SubjectsSection />}
 
-        {/* Testimonials List Section */}
-        <TestimonialsSection/>
-        
-        {/* Booking CTA Section */}
-        <BookingCTASection/>
-        
+        <BenefitsSection />
+        <TestimonialsSection />
+        <BookingCTASection />
       </main>
 
-      {/* Footer */}
-      <Footer/>
+      <Footer />
     </div>
   );
 }

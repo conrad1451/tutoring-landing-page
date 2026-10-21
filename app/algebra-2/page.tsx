@@ -17,6 +17,7 @@ export default function Algebra2Page() {
       badge="1-on-1 Online Algebra 2 Tutoring"
       headline="I help Algebra 2 students who have shaky foundations in Algebra 1 to fortify their foundations through targeted diagnostics and one to three weekly sessions"
       intro="Algebra 2 builds directly on Algebra 1. When gaps in the basics make new topics feel impossible, we find exactly where they are and fix them, so the current course finally starts to click."
+      videoSrc="https://fast.wistia.net/embed/iframe/e51ki4fevj"
     />
   );
 }
